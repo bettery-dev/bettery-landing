@@ -1,0 +1,23 @@
+/* media width */
+
+$iPhone_5: 'only screen and (max-width: 320px)';
+
+$mobile: 'only screen and (max-width: 690px)';
+$mobile-landscape: 'only screen and (max-width: 995px) and (orientation: landscape)';
+
+$tablet: 'only screen and (max-width: 995px)';
+$tablet-landscape: 'only screen and (max-width: 1024px) and (orientation: landscape)';
+
+$mac: 'only screen and (max-width: 1440px)';
+
+/* Color palette */
+
+$dark: #0f0a30;
+$energy: #1a25e0;
+$health: #6006ae;
+$mind: #85c598;
+$yellow: #ebc447;
+$green: #03291f;
+$white: #fff;
+$black: #000;
+$error: #ff5757;

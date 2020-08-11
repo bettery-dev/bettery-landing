@@ -1,0 +1,78 @@
+@import 'var';
+@import 'native';
+@import 'fonts';
+
+body {
+  color: $white;
+  background: $dark;
+
+  margin: 0;
+}
+
+.wrapper {
+  position: relative;
+
+  max-width: 1440px;
+  margin: auto;
+
+  padding: 0 48px;
+
+  @media #{$tablet} {
+    padding: 0 24px;
+  }
+
+  @media #{$mac} {
+    overflow: hidden;
+  }
+}
+
+.wrapper > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: $white;
+  @include footer;
+
+  min-height: 140px;
+
+  margin-top: 206px;
+
+  @media #{$mobile} {
+    flex-direction: column;
+
+    border-top: 1px solid rgba($white, 0.2);
+
+    margin-top: 70px;
+    padding-top: 23px;
+    padding-bottom: 47px;
+  }
+}
+.wrapper > footer menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-left: 0;
+}
+.wrapper > footer menu a {
+  color: $white;
+  text-decoration: none;
+
+  margin-left: 48px;
+  @media #{$tablet} {
+    margin-left: 24px;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+.copyright {
+  @include copyright;
+
+  @media #{$mobile} {
+    opacity: 0.2;
+  }
+}
