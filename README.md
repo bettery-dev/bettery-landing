@@ -1,4 +1,4 @@
-# battery
+# bettery
 
 > Nuxt.js project
 
