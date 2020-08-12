@@ -1,5 +1,9 @@
 module.exports = {
   mode: 'universal',
+  target: 'static',
+  router: {
+    base: '/bettery-landing/'
+  },
   /*
    ** Headers of the page
    */
