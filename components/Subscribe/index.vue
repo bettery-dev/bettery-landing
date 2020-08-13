@@ -27,7 +27,7 @@
         Мы отправили тебе письмо с подарком.
       </p>
       <p>А пока можешь выпить стаканчик воды. 😎</p>
-      <a href="mailto:mishalovesspam@gmail.com" class="email" target="_blank">mishalovesspam@gmail.com</a>
+      <a href="mailto:hello@bettery.app" class="email" target="_blank">hello@bettery.app</a>
     </div>
   </div>
 </template>
