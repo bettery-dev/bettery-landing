@@ -21,6 +21,7 @@ $radius: 48px;
 
   @media #{$tablet}, #{$tablet-landscape} {
     max-width: 650px;
+    padding: 24px;
   }
   @media #{$mobile}, #{$mobile-landscape} {
     max-width: 500px;

@@ -3,17 +3,14 @@
     <div class="wrapper">
       <nuxt />
 
-      <footer class="footer">
-        <a href="/"><img src="~/assets/img/logo_footer.svg" alt=""/></a>
-
-        <menu>
-          <a href="#">Правила</a>
-          <a href="#">Приватность</a>
-          <a href="#">Помощь</a>
-        </menu>
-
-        <div class="copyright">Bettery.app © 2020</div>
-      </footer>
+      <v-footer />
     </div>
   </div>
 </template>
+
+<script>
+import VFooter from '~/components/footer'
+export default {
+  components: { VFooter }
+}
+</script>

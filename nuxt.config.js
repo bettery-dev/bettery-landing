@@ -1,9 +1,11 @@
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
   target: 'static',
+
   router: {
-    base: '/bettery-landing/'
+    base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/bettery-landing/' : '/'
   },
+
   /*
    ** Headers of the page
    */
