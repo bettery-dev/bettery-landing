@@ -62,7 +62,14 @@
         <div class="bg3"></div>
       </div>
       <div ref="list" class="list">
-        <div class="list-items" ref="list-items" :style="`transform: translate3d(${move}px, 0, 0)`">
+        <div
+          class="list-items"
+          ref="list-items"
+          :style="`transform: translate3d(${move}px, 0, 0)`"
+          @touchend="dragStop"
+          @touchstart="dragStart"
+          @touchmove.prevent="dragMove"
+        >
           <div>
             <h2>Измени свою жизнь</h2>
             <p>
@@ -106,15 +113,25 @@
 </template>
 
 <script>
+import isMobile from 'ismobilejs'
 import { scroller } from 'vue-scrollto/src/scrollTo'
 import Subscribe from '~/components/Subscribe/index'
 
 export default {
   data: () => ({
     move: 0,
-    itemsScrollWidth: [],
     itemsWidth: 0,
-    loadImages: 0
+    loadImages: 0,
+
+    dragShift: {
+      x: 0,
+      y: 0
+    },
+    dragPosition: {
+      x: 0,
+      y: 0
+    },
+    isDragStart: false
   }),
   components: {
     Subscribe
@@ -134,24 +151,41 @@ export default {
       this.loadImages++
       if (this.loadImages >= 3) this.onResize()
     },
-    listScroll(evt, el) {
+    listScroll() {
+      if (isMobile(window.navigator).phone) return
+
       const offsetTop = this.$refs.step4.offsetTop
       const list = this.$refs.list.getBoundingClientRect()
 
-      const H = window.innerHeight
-      const W = window.innerWidth
-
-      const from = this.itemsWidth + list.x - W / 2 - this.itemsScrollWidth[this.itemsScrollWidth.length - 1] / 2
-
-      const Ystart = offsetTop - H + list.height + 100
+      const Ystart = offsetTop - window.innerHeight + list.height + 100
       const Yend = offsetTop - 100
-      const dynamicHeight = Yend - Ystart
 
-      let axisX
+      const Ypercent = (Yend - window.scrollY) / (Yend - Ystart)
 
-      let proc = (Yend - window.scrollY) / dynamicHeight
-      axisX = proc > 1 ? 1 : proc < 0 ? 0 : proc
-      this.move = from * (axisX - 1)
+      let Xmove
+      const Xend = this.itemsWidth - list.width
+      Xmove = Ypercent > 1 ? 1 : Ypercent < 0 ? 0 : Ypercent
+      this.move = Xend * (Xmove - 1)
+    },
+    dragStop() {
+      this.isDragStart = false
+    },
+    dragStart($event) {
+      this.isDragStart = true
+      const pageX = $event.touches[0].pageX
+      this.dragShift.x = pageX - this.dragPosition.x
+    },
+    dragMove($event) {
+      if (!this.isDragStart) return
+
+      const Xstart = this.$refs.list.getBoundingClientRect().x
+      const Xend = (this.itemsWidth + Xstart - window.innerWidth) * -1
+
+      const pageX = $event.touches[0].pageX
+      this.dragPosition.x = pageX - this.dragShift.x
+
+      const Xmove = this.dragPosition.x > 0 ? 0 : Xend > this.dragPosition.x ? Xend : this.dragPosition.x
+      this.move = Xmove
     },
     scrollTo() {
       const firstScrollTo = scroller()
@@ -161,10 +195,9 @@ export default {
     },
     onResize() {
       this.move = 0
-      this.itemsScrollWidth = Array.from(this.$refs['list-items'].children).map(
-        item => item.getBoundingClientRect().width
-      )
-      this.itemsWidth = this.itemsScrollWidth.reduce((acc, cur) => acc + cur)
+      this.itemsWidth = Array.from(this.$refs['list-items'].children)
+        .map(item => item.getBoundingClientRect().width)
+        .reduce((acc, cur) => acc + cur)
     }
   }
 }

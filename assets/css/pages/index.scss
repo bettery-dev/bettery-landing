@@ -389,6 +389,8 @@
 
   @media #{$mobile}, #{$mobile-landscape} {
     margin-bottom: 130px;
+    margin-left: -24px;
+    margin-right: -24px;
   }
 }
 .step4 .bg {
@@ -458,19 +460,26 @@
 }
 
 .step4 .list-items {
+  display: flex;
+
+  @media #{$mobile}, #{$mobile-landscape} {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+
+    padding-left: 24px;
+  }
+}
+.step4 .list-items {
   position: relative;
   z-index: 1;
 
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  width: 500em;
-
-  transition: transform 0.3s ease-out;
 }
 .step4 .list-items > div {
   cursor: pointer;
+
+  flex: 0 0 auto;
 
   img {
     margin-top: -24px;
