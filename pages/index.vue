@@ -137,9 +137,14 @@ export default {
     listScroll() {
       if (isMobile(window.navigator).phone) return
 
-      const offsetTop = this.$refs.step4.offsetTop
       const list = this.$refs.list.getBoundingClientRect()
 
+      if (window.innerWidth > this.itemsWidth) {
+        this.move = (this.itemsWidth - list.width) / -2
+        return
+      }
+
+      const offsetTop = this.$refs.step4.offsetTop
       const Ystart = offsetTop - window.innerHeight + list.height + 100
       const Yend = offsetTop - 100
 

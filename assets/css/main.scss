@@ -56,8 +56,12 @@ body {
   padding-left: 0;
 }
 .wrapper > footer menu a {
-  color: $white;
+  color: rgba($white, 0.5);
   text-decoration: none;
+
+  &:hover {
+    color: rgba($white, 1);
+  }
 
   margin-left: 48px;
   @media #{$tablet} {
@@ -70,11 +74,8 @@ body {
 }
 
 .copyright {
+  color: rgba($white, 0.5);
   @include copyright;
-
-  @media #{$mobile} {
-    opacity: 0.2;
-  }
 }
 
 h1 {
