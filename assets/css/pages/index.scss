@@ -503,7 +503,7 @@
     }
   }
 
-  @media #{$tablet}, #{$tablet-landscape} , #{$iPadPro} {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     max-height: 364px;
   }
 }
