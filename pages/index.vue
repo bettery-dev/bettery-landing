@@ -62,14 +62,7 @@
         <div class="bg3"></div>
       </div>
       <div ref="list" class="list">
-        <div
-          class="list-items"
-          ref="list-items"
-          :style="`transform: translate3d(${move}px, 0, 0)`"
-          @touchend="dragStop"
-          @touchstart="dragStart"
-          @touchmove.prevent="dragMove"
-        >
+        <div class="list-items" ref="list-items" :style="`transform: translate3d(${move}px, 0, 0)`">
           <div>
             <h2>Измени свою жизнь</h2>
             <p>
@@ -121,17 +114,7 @@ export default {
   data: () => ({
     move: 0,
     itemsWidth: 0,
-    loadImages: 0,
-
-    dragShift: {
-      x: 0,
-      y: 0
-    },
-    dragPosition: {
-      x: 0,
-      y: 0
-    },
-    isDragStart: false
+    loadImages: 0
   }),
   components: {
     Subscribe
@@ -166,26 +149,6 @@ export default {
       const Xend = this.itemsWidth - list.width
       Xmove = Ypercent > 1 ? 1 : Ypercent < 0 ? 0 : Ypercent
       this.move = Xend * (Xmove - 1)
-    },
-    dragStop() {
-      this.isDragStart = false
-    },
-    dragStart($event) {
-      this.isDragStart = true
-      const pageX = $event.touches[0].pageX
-      this.dragShift.x = pageX - this.dragPosition.x
-    },
-    dragMove($event) {
-      if (!this.isDragStart) return
-
-      const Xstart = this.$refs.list.getBoundingClientRect().x
-      const Xend = (this.itemsWidth + Xstart - window.innerWidth) * -1
-
-      const pageX = $event.touches[0].pageX
-      this.dragPosition.x = pageX - this.dragShift.x
-
-      const Xmove = this.dragPosition.x > 0 ? 0 : Xend > this.dragPosition.x ? Xend : this.dragPosition.x
-      this.move = Xmove
     },
     scrollTo() {
       const firstScrollTo = scroller()
