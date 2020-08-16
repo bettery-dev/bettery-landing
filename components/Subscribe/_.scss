@@ -19,8 +19,9 @@ $radius: 48px;
 
   padding: 48px;
 
-  @media #{$tablet}, #{$tablet-landscape} {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     max-width: 650px;
+    padding: 24px;
   }
   @media #{$mobile}, #{$mobile-landscape} {
     max-width: 500px;
@@ -82,7 +83,7 @@ input {
     text-align: center;
   }
 
-  @media #{$tablet}, #{$tablet-landscape} {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     height: 48px;
     margin-bottom: 16px;
     text-align: center;
@@ -118,7 +119,7 @@ button {
     color: rgba($dark, 0.2);
   }
 
-  @media #{$tablet}, #{$tablet-landscape} {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     top: auto;
     left: auto;
     right: auto;

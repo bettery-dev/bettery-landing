@@ -21,14 +21,14 @@
             сферах: здоровье, сознание, эффективность. Получи свой индивидуальный Путь развития — новая
             привычка-челлендж каждую неделю!
           </p>
-          <div class="scroll">
+          <a href="#" class="scroll" @click.prevent="scrollTo">
             <div class="scroll-arrow"></div>
             <span>Начни свой Путь прямо сейчас!</span>
-          </div>
+          </a>
         </div>
       </div>
     </section>
-    <section class="step2">
+    <section id="step2" class="step2">
       <div class="bg">
         <div class="bg1"></div>
         <div class="bg2"></div>
@@ -55,7 +55,7 @@
         </p>
       </div>
     </section>
-    <section class="step4">
+    <section class="step4" ref="step4">
       <div class="bg">
         <div class="bg1"></div>
         <div class="bg2"></div>
@@ -63,7 +63,7 @@
       </div>
       <div ref="list" class="list">
         <div class="list-items" ref="list-items" :style="`transform: translate3d(${move}px, 0, 0)`">
-          <div @click="onItem(0)">
+          <div>
             <h2>Измени свою жизнь</h2>
             <p>
               Дорогу осилит идущий. Двигаясь маленькими шагами, ты быстро пойдёшь по своему Пути. Начни сегодня. Bettery
@@ -71,22 +71,25 @@
               и новые потребности. Знай: лучшая версия себя не за горами!
             </p>
           </div>
-          <div @click="onItem(1)">
+          <div>
             <img
+              @load="onLoadImg"
               srcset="~/assets/img/image_5.png 1x, ~/assets/img/image_5@2x.png 2x"
               src="~/assets/img/image_5.png"
               alt=""
             />
           </div>
-          <div @click="onItem(2)">
+          <div>
             <img
+              @load="onLoadImg"
               srcset="~/assets/img/image_6.png 1x, ~/assets/img/image_6@2x.png 2x"
               src="~/assets/img/image_6.png"
               alt=""
             />
           </div>
-          <div @click="onItem(3)">
+          <div>
             <img
+              @load="onLoadImg"
               srcset="~/assets/img/image_7.png 1x, ~/assets/img/image_7@2x.png 2x"
               src="~/assets/img/image_7.png"
               alt=""
@@ -103,43 +106,66 @@
 </template>
 
 <script>
+import isMobile from 'ismobilejs'
+import { scroller } from 'vue-scrollto/src/scrollTo'
 import Subscribe from '~/components/Subscribe/index'
 
 export default {
   data: () => ({
-    W: null,
-    LIST: null,
-    ITEMS: [],
-    move: 0
+    move: 0,
+    itemsWidth: 0,
+    loadImages: 0
   }),
   components: {
     Subscribe
   },
   mounted() {
-    this.onResize()
+    window.addEventListener('scroll', this.listScroll)
     window.addEventListener('resize', this.onResize)
     window.addEventListener('orientationchange', this.onResize)
   },
+  destroyed() {
+    window.removeEventListener('resize', this.onResize)
+    window.removeEventListener('orientationchange', this.onResize)
+    window.removeEventListener('scroll', this.listScroll)
+  },
   methods: {
+    onLoadImg() {
+      this.loadImages++
+      if (this.loadImages >= 3) this.onResize()
+    },
+    listScroll() {
+      if (isMobile(window.navigator).phone) return
+
+      const list = this.$refs.list.getBoundingClientRect()
+
+      if (window.innerWidth > this.itemsWidth) {
+        this.move = (this.itemsWidth - list.width) / -2
+        return
+      }
+
+      const offsetTop = this.$refs.step4.offsetTop
+      const Ystart = offsetTop - window.innerHeight + list.height + 100
+      const Yend = offsetTop - 100
+
+      const Ypercent = (Yend - window.scrollY) / (Yend - Ystart)
+
+      let Xmove
+      const Xend = this.itemsWidth - list.width
+      Xmove = Ypercent > 1 ? 1 : Ypercent < 0 ? 0 : Ypercent
+      this.move = Xend * (Xmove - 1)
+    },
+    scrollTo() {
+      const firstScrollTo = scroller()
+      firstScrollTo('#step2', {
+        offset: -200
+      })
+    },
     onResize() {
       this.move = 0
-
-      this.$nextTick()
-
-      this.W = window.innerWidth
-      this.LIST = this.$refs.list.getBoundingClientRect().x
-
-      this.ITEMS = Array.from(this.$refs['list-items'].children).map(item => ({
-        x: item.getBoundingClientRect().x,
-        width: item.getBoundingClientRect().width
-      }))
-    },
-    onItem(n) {
-      if (n === 0) return (this.move = 0)
-
-      const { x, width } = this.ITEMS[n]
-
-      this.move = this.W / 2 - (x + width / 2)
+      this.itemsWidth = Array.from(this.$refs['list-items'].children)
+        .map(item => item.getBoundingClientRect().width)
+        .reduce((acc, cur) => acc + cur)
     }
   }
 }
