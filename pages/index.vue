@@ -3,11 +3,13 @@
     <section class="step1">
       <div>
         <div class="image">
-          <img
-            srcset="~/assets/img/step1_iPhone.png 1x, ~/assets/img/step1_iPhone@2x.png 2x"
-            src="~/assets/img/step1_iPhone.png"
-            alt=""
-          />
+          <div class="image-scroll">
+            <img
+              srcset="~/assets/img/step1_iPhone.png 1x, ~/assets/img/step1_iPhone@2x.png 2x"
+              src="~/assets/img/step1_iPhone.png"
+              alt=""
+            />
+          </div>
         </div>
       </div>
       <div>
@@ -22,8 +24,7 @@
             привычка-челлендж каждую неделю!
           </p>
           <a href="#" class="scroll" @click.prevent="scrollTo">
-            <div class="scroll-arrow"></div>
-            <span>Начни свой Путь прямо сейчас!</span>
+            <i class="scroll-arrow"></i><span>Начни свой Путь прямо сейчас!</span>
           </a>
         </div>
       </div>
@@ -44,7 +45,7 @@
     </section>
     <section class="step3">
       <div class="bg">
-        <div class="bg1"></div>
+        <img src="~/assets/img/Illustration.svg" alt="Illustration" />
       </div>
       <div class="content">
         <h2>Собери коллекцию привычек</h2>
@@ -144,9 +145,10 @@ export default {
         return
       }
 
+      const Yoffset = 48
       const offsetTop = this.$refs.step4.offsetTop
-      const Ystart = offsetTop - window.innerHeight + list.height + 100
-      const Yend = offsetTop - 100
+      const Ystart = offsetTop - window.innerHeight + list.height + Yoffset
+      const Yend = offsetTop - Yoffset
 
       const Ypercent = (Yend - window.scrollY) / (Yend - Ystart)
 

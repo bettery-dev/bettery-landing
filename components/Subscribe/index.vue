@@ -27,7 +27,7 @@
         Мы отправили тебе письмо с подарком.
       </p>
       <p>А пока можешь выпить стаканчик воды. 😎</p>
-      <a href="mailto:mishalovesspam@gmail.com" class="email" target="_blank">mishalovesspam@gmail.com</a>
+      <div class="email">{{ email }}</div>
     </div>
   </div>
 </template>
@@ -51,7 +51,6 @@ export default {
       if (!this.validate) return
 
       // TODO: Need AJAX
-      this.email = null
       this.validate = true
       this.isSuccess = true
     }
