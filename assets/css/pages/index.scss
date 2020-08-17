@@ -370,7 +370,9 @@
   }
 
   @media #{$mobile}, #{$mobile-landscape} {
+    flex-direction: column;
     margin-bottom: 130px;
+    padding-right: 0;
   }
 }
 .step3 > div {
@@ -383,38 +385,15 @@
 
   text-align: center;
   padding-right: 58px;
+
+  @media #{$mobile}, #{$mobile-landscape} {
+    margin-bottom: 37px;
+    padding-right: 0;
+  }
 }
 .step3 .bg img {
   @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     max-width: 321px;
-  }
-}
-.step3 .bg1 {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-
-  margin-top: auto;
-  margin-bottom: auto;
-
-  max-width: 40%;
-  max-height: 493px;
-
-  background: url('~@/assets/img/Illustration.svg') 50% no-repeat;
-  background-size: contain;
-
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
-    position: static;
-    margin: auto;
-    background-size: contain;
-    height: 493px;
-  }
-
-  @media #{$mobile}, #{$mobile-landscape} {
-    max-width: 100%;
-    height: 243px;
   }
 }
 .step3 .content {
