@@ -10,12 +10,16 @@ module.exports = {
    ** Headers of the page
    */
   head: {
+    htmlAttrs: {
+      lang: 'ru'
+    },
     title: 'Bettery.app',
     meta: [
       { charset: 'utf-8' },
 
+      { name: 'title', content: 'Bettery.app' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' },
+      { hid: 'description', name: 'description', content: 'Твой личный коуч для лучшей жизни' },
 
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' },
@@ -23,7 +27,21 @@ module.exports = {
       { name: 'apple-mobile-web-app-title', content: 'bettery.app' },
       { name: 'application-name', content: 'bettery.app' },
       { name: 'msapplication-TileColor', content: '#2b5797' },
-      { name: 'theme-color', content: '#ffffff' }
+      { name: 'theme-color', content: '#ffffff' },
+
+      // Open Graph / Facebook
+      { property: 'og:type', content: 'website' },
+      { property: 'og:url', content: 'https://bettery.app/' },
+      { property: 'og:title', content: 'Bettery.app' },
+      { property: 'og:description', content: 'Твой личный коуч для лучшей жизни' },
+      { property: 'og:image', content: '/preview.jpeg' },
+
+      // Twitter
+      { property: 'twitter:card', content: 'summary_large_image' },
+      { property: 'twitter:url', content: 'https://bettery.app/' },
+      { property: 'twitter:title', content: 'Bettery.app' },
+      { property: 'twitter:description', content: 'Твой личный коуч для лучшей жизни' },
+      { property: 'twitter:image', content: '/preview.jpeg' }
     ],
 
     link: [
