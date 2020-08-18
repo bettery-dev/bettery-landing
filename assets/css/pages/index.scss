@@ -2,6 +2,7 @@
 @import '~@/assets/css/fonts';
 
 .step1 {
+  position: relative;
   display: flex;
 
   margin-bottom: 177px;
@@ -14,8 +15,7 @@
   }
 
   @media #{$mobile}, #{$mobile-landscape} {
-    margin-bottom: 246px; // 144
-    padding-bottom: 0;
+    margin-bottom: 246px;
   }
 }
 .step1 > div {
@@ -49,6 +49,19 @@
   }
 }
 
+.step1 .image-scroll {
+  @media #{$tablet} {
+    top: 33px;
+    right: 72px;
+    bottom: auto;
+    position: absolute;
+  }
+  @media #{$mobile}, #{$mobile-landscape} {
+    right: -87px;
+    bottom: 140px;
+  }
+}
+
 .step1 .image img {
   width: auto;
   max-width: 100%;
@@ -56,9 +69,8 @@
   margin-bottom: -138px;
 
   @media #{$tablet} {
-    top: 33px;
-    right: -87px;
-    position: absolute;
+    top: 0;
+    position: sticky;
 
     margin: 0;
 
@@ -70,12 +82,14 @@
   padding-top: 82px;
 
   @media #{$tablet}, #{$tablet-landscape} {
-    width: 50%;
-    margin-left: 48px;
+    margin-left: 96px;
     margin-top: 33px;
+    max-width: 285px;
   }
   @media #{$tablet-landscape} {
     width: 100%;
+    max-width: 100%;
+    margin-left: 0;
   }
   @media #{$mobile}, #{$mobile-landscape} {
     width: 50%;
@@ -90,7 +104,7 @@
   @media #{$tablet} {
     display: block;
     top: 56px;
-    left: 24px;
+    left: 96px;
     right: auto;
     position: absolute;
 
@@ -98,6 +112,9 @@
     height: 56px;
 
     margin: 0;
+  }
+  @media #{$mobile}, #{$mobile-landscape} {
+    left: 24px;
   }
 }
 .step1 .content .logo img {
@@ -122,8 +139,20 @@
 .step1 .content p {
   @include text;
   margin-bottom: 48px;
+
+  @media #{$mobile}, #{$mobile-landscape} {
+    margin-bottom: 90px;
+  }
 }
 
+@keyframes bounce {
+  from {
+    transform: translate3d(0, -3px, 0);
+  }
+  to {
+    transform: translate3d(0, 7px, 0);
+  }
+}
 .step1 .content .scroll {
   display: flex;
   align-items: center;
@@ -139,21 +168,18 @@
     line-height: 2;
   }
 
-  @media #{$mobile}, #{$mobile-landscape}, #{$tablet} {
-    display: none;
-  }
-}
+  @media #{$mobile}, #{$mobile-landscape} {
+    left: 0;
+    right: 0;
+    position: absolute;
 
-@keyframes bounce {
-  from {
-    transform: translate3d(0, -3px, 0);
-  }
-  to {
-    transform: translate3d(0, 7px, 0);
+    @include text;
+    flex-direction: column-reverse;
   }
 }
 
 .step1 .content .scroll .scroll-arrow {
+  flex: 0 0 auto;
   position: relative;
 
   width: 48px;
@@ -161,7 +187,14 @@
 
   background: rgba($white, 0.25);
 
+  overflow: hidden;
   border-radius: 50%;
+
+  @media #{$mobile}, #{$mobile-landscape} {
+    width: 24px;
+    height: 24px;
+    background: $white;
+  }
 
   &::after {
     top: 2px;
@@ -177,10 +210,20 @@
     animation: bounce 0.6s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
+
+    @media #{$mobile}, #{$mobile-landscape} {
+      background-size: 12px;
+      animation: none;
+    }
   }
 }
 .step1 .content .scroll span {
   margin-left: 24px;
+
+  @media #{$mobile}, #{$mobile-landscape} {
+    margin-left: 0;
+    margin-bottom: 12px;
+  }
 }
 
 .step2 {
@@ -219,13 +262,16 @@
 
   @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     top: -96px;
-    left: 87px;
+    left: 54.0364583333333%;
     right: auto;
     bottom: auto;
 
     width: 567px;
     height: 48px;
     background-size: contain;
+  }
+  @media #{$mobile}, #{$mobile-landscape} {
+    left: 87px;
   }
 }
 .step2 .bg2 {
@@ -240,8 +286,8 @@
 
   @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     top: auto;
-    left: auto;
-    right: 198px;
+    left: -1px;
+    right: auto;
     bottom: -96px;
 
     width: 249px;
@@ -262,12 +308,15 @@
   background: url('~@/assets/img/Group_52.svg') 0 50% no-repeat;
 
   @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
-    left: 191px;
+    left: 67.578125%;
     bottom: -192px;
 
     width: 371px;
     height: 48px;
     background-size: contain;
+  }
+  @media #{$mobile}, #{$mobile-landscape} {
+    left: 191px;
   }
 }
 .step2 .content {
@@ -279,7 +328,7 @@
   padding: 48px;
   border-radius: 48px;
 
-  @media #{$mobile}, #{$mobile-landscape} {
+  @media #{$mobile}, #{$mobile-landscape}, #{$tablet} {
     position: static;
     padding: 24px;
     border-radius: 24px;
@@ -291,7 +340,7 @@
   @include h2;
   margin-bottom: 32px;
 
-  @media #{$mobile}, #{$mobile-landscape}, #{$iPadPro} {
+  @media #{$mobile}, #{$mobile-landscape}, #{$tablet}, #{$iPadPro} {
     margin-bottom: 16px;
   }
 }
@@ -307,59 +356,44 @@
   position: relative;
 
   display: flex;
-  justify-content: flex-end;
-  margin-right: 48px;
+  justify-content: space-between;
   margin-bottom: 291px;
 
+  padding-right: 48px;
+
+  @media #{$tablet} {
+    padding-right: 72px;
+  }
+
   @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
-    position: static;
-    display: block;
-    margin-right: 0;
+    margin-bottom: 144px;
   }
 
   @media #{$mobile}, #{$mobile-landscape} {
+    flex-direction: column;
     margin-bottom: 130px;
+    padding-right: 0;
   }
+}
+.step3 > div {
+  flex: 50%;
 }
 .step3 .bg {
-  top: 0;
-  left: 0;
-  right: -96px;
-  bottom: 0;
-  position: absolute;
-  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
-    position: static;
-    margin-bottom: 37px;
-  }
-}
-.step3 .bg1 {
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
-
-  margin-top: auto;
-  margin-bottom: auto;
-
-  max-width: 40%;
-  max-height: 493px;
-
-  background: url('~@/assets/img/Illustration.svg') 50% no-repeat;
-  background-size: contain;
-
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
-    position: static;
-    margin: auto;
-    background-size: contain;
-    height: 493px;
-  }
+  text-align: center;
+  padding-right: 58px;
 
   @media #{$mobile}, #{$mobile-landscape} {
-    max-width: 100%;
-    height: 243px;
+    margin-bottom: 37px;
+    padding-right: 0;
+  }
+}
+.step3 .bg img {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+    max-width: 321px;
   }
 }
 .step3 .content {
@@ -376,7 +410,9 @@
     margin: auto;
   }
 
-  @media #{$mobile}, #{$mobile-landscape} {
+  @media #{$mobile}, #{$mobile-landscape}, #{$tablet} {
+    max-width: 476px;
+    margin: auto;
     padding: 24px;
     border-radius: 24px;
   }
@@ -416,7 +452,18 @@
 
   background: url('~@/assets/img/Vector.svg') no-repeat;
 
-  @media #{$mobile}, #{$mobile-landscape}, #{$tablet}, #{$tablet-landscape} {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+    left: auto;
+    bottom: -165px;
+    right: 145px;
+
+    background-size: contain;
+
+    width: 268px;
+    height: 253px;
+  }
+
+  @media #{$mobile}, #{$mobile-landscape} {
     display: none;
   }
 }
@@ -435,18 +482,27 @@
 
   background: url('~@/assets/img/Vector-1.svg') no-repeat;
 
-  @media #{$mobile}, #{$mobile-landscape} {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
     top: -115px;
-    width: 268px;
-    height: 228px;
+    left: -15px;
+    right: auto;
+
     background-size: contain;
 
+    width: 268px;
+    height: 228px;
+
     transform: translate3d(0, 0, 0);
+  }
+
+  @media #{$mobile}, #{$mobile-landscape} {
+    left: 0;
+    right: 0;
   }
 }
 .step4 .bg3 {
   right: -104px;
-  bottom: -237px;
+  bottom: -121px;
   position: absolute;
 
   width: 418px;
@@ -454,7 +510,18 @@
 
   background: url('~@/assets/img/Vector-2.svg') no-repeat;
 
-  @media #{$mobile}, #{$mobile-landscape}, #{$tablet}, #{$tablet-landscape} {
+  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+    top: -104px;
+    left: auto;
+    right: -121px;
+
+    background-size: contain;
+
+    width: 268px;
+    height: 256px;
+  }
+
+  @media #{$mobile}, #{$mobile-landscape} {
     display: none;
   }
 }
@@ -475,6 +542,8 @@
   z-index: 1;
 
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 .step4 .list-items > div {
   cursor: pointer;
@@ -486,12 +555,7 @@
 
     @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
       margin-left: -24px;
-      height: 420px;
-    }
-    @media #{$mobile}, #{$mobile-landscape} {
-      margin-top: -19px;
-      margin-left: -24px;
-      height: 400px;
+      height: 532px;
     }
   }
 
@@ -501,10 +565,6 @@
     @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
       margin-left: 0;
     }
-  }
-
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
-    max-height: 364px;
   }
 }
 .step4 .list-items > div:first-child {
@@ -516,7 +576,7 @@
   border-radius: 48px;
 
   @media #{$tablet}, #{$tablet-landscape} , #{$iPadPro} {
-    max-width: 231px;
+    max-width: 215px;
     padding: 24px;
     border-radius: 24px;
   }
