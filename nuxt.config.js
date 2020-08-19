@@ -2,6 +2,11 @@ module.exports = {
   mode: 'spa',
   target: 'static',
 
+  env: {
+    BASE_URL: process.env.BASE_URL || 'http://178.128.240.97:3000',
+    ANALYTICS_ID: process.env.ANALYTICS_ID || 'G-51J0K3PNXR'
+  },
+
   router: {
     base: process.env.DEPLOY_ENV === 'GH_PAGES' ? '/bettery-landing/' : '/'
   },
@@ -94,7 +99,10 @@ module.exports = {
     }
   },
 
-  plugins: [{ src: '~plugins/scroll', mode: 'client' }],
+  plugins: [
+    { src: '~plugins/scroll', mode: 'client' },
+    { src: '~plugins/analytics', mode: 'client' }
+  ],
 
   css: [{ src: '~assets/css/main.scss', lang: 'scss' }]
 }
