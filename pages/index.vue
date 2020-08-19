@@ -139,6 +139,7 @@ export default {
   methods: {
     imageScroll(evt, el) {
       if (!this.$refs.step1) return
+      if (!isMobile(window.navigator).phone) return
 
       const height = this.$refs.step1.clientHeight - el.clientHeight - 160
       const Ymove = window.scrollY
