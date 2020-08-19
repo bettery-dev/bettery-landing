@@ -546,8 +546,6 @@
   justify-content: flex-start;
 }
 .step4 .list-items > div {
-  cursor: pointer;
-
   flex: 0 0 auto;
 
   img {
@@ -568,8 +566,6 @@
   }
 }
 .step4 .list-items > div:first-child {
-  cursor: auto;
-
   max-width: 576px;
   background: $mind;
   padding: 48px;

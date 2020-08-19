@@ -7,18 +7,10 @@ body {
   background: $dark;
 
   margin: 0;
-
-  @media #{$mobile}, #{$mobile-landscape} {
-    overflow-x: hidden;
-  }
 }
 
 .overflow {
   overflow: hidden;
-
-  @media #{$mobile}, #{$mobile-landscape} {
-    overflow: visible;
-  }
 }
 
 .wrapper {

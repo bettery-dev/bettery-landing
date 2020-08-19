@@ -46,13 +46,30 @@ export default {
     onDelete() {
       this.validate = true
     },
-    onSubmit() {
+    async onSubmit() {
       this.validate = isValidEmail(this.email)
       if (!this.validate) return
 
-      // TODO: Need AJAX
-      this.validate = true
-      this.isSuccess = true
+      const data = {
+        email: this.email,
+        list: 'Bettery'
+      }
+
+      try {
+        await fetch(process.env.BASE_URL + '/api/subscribe', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+
+        this.validate = true
+        this.isSuccess = true
+      } catch (e) {
+        this.validate = false
+        this.isSuccess = false
+      }
     }
   }
 }

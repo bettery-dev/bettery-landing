@@ -16,7 +16,12 @@ $ yarn build
 $ yarn start
 
 # generate static project
-$ yarn generate
+
+Default options
+BASE_URL = http://178.128.240.97:3000
+ANALYTICS_ID = G-51J0K3PNXR
+
+$ BASE_URL=${BASE_URL} ANALYTICS_ID=${ANALYTICS_ID} yarn generate
 
 # Deploy GH-PAGES static project
 $ yarn deploy

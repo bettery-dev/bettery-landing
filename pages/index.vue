@@ -1,13 +1,15 @@
 <template>
   <article class="container">
-    <section class="step1">
+    <section class="step1" ref="step1">
       <div>
         <div class="image">
           <div class="image-scroll">
             <img
+              v-scroll="imageScroll"
               srcset="~/assets/img/step1_iPhone.png 1x, ~/assets/img/step1_iPhone@2x.png 2x"
               src="~/assets/img/step1_iPhone.png"
               alt=""
+              :style="`transform: translate3d(0, ${yPhone}px, 0)`"
             />
           </div>
         </div>
@@ -63,7 +65,12 @@
         <div class="bg3"></div>
       </div>
       <div ref="list" class="list">
-        <div class="list-items" ref="list-items" :style="`transform: translate3d(${move}px, 0, 0)`">
+        <div
+          class="list-items"
+          ref="list-items"
+          v-scroll="listScroll"
+          :style="`transform: translate3d(${move}px, 0, 0)`"
+        >
           <div>
             <h2>Измени свою жизнь</h2>
             <p>
@@ -114,28 +121,36 @@ import Subscribe from '~/components/Subscribe/index'
 export default {
   data: () => ({
     move: 0,
+    yPhone: 0,
     itemsWidth: 0,
     loadImages: 0
   }),
   components: {
     Subscribe
   },
-  mounted() {
-    window.addEventListener('scroll', this.listScroll)
+  beforeMount() {
     window.addEventListener('resize', this.onResize)
     window.addEventListener('orientationchange', this.onResize)
   },
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
     window.removeEventListener('orientationchange', this.onResize)
-    window.removeEventListener('scroll', this.listScroll)
   },
   methods: {
+    imageScroll(evt, el) {
+      if (!this.$refs.step1) return
+      if (!isMobile(window.navigator).phone) return
+
+      const height = this.$refs.step1.clientHeight - el.clientHeight - 160
+      const Ymove = window.scrollY
+      this.yPhone = height < Ymove ? height : Ymove < 0 ? 0 : Ymove
+    },
     onLoadImg() {
       this.loadImages++
       if (this.loadImages >= 3) this.onResize()
     },
-    listScroll() {
+    listScroll(evt, el) {
+      if (!this.$refs.list) return
       if (isMobile(window.navigator).phone) return
 
       const list = this.$refs.list.getBoundingClientRect()
