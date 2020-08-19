@@ -94,5 +94,7 @@ module.exports = {
     }
   },
 
+  plugins: [{ src: '~plugins/scroll', mode: 'client' }],
+
   css: [{ src: '~assets/css/main.scss', lang: 'scss' }]
 }
