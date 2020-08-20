@@ -3,7 +3,7 @@ module.exports = {
   target: 'static',
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://178.128.240.97:3000',
+    BASE_URL: process.env.BASE_URL || 'https://landing-backend.bettery.app',
     ANALYTICS_ID: process.env.ANALYTICS_ID || 'G-51J0K3PNXR'
   },
 
