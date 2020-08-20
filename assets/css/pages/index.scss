@@ -391,11 +391,15 @@
     padding-right: 0;
   }
 }
+
 .step3 .bg img {
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
-    max-width: 321px;
+  @media #{$tablet}, #{$tablet-landscape} {
+    width: auto;
+    max-width: 100%;
+    //max-width: 321px;
   }
 }
+
 .step3 .content {
   position: relative;
   z-index: 1;
