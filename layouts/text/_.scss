@@ -6,7 +6,7 @@
   max-width: 680px;
   margin-left: 288px;
 
-  @media #{$mobile}, #{$mobile-landscape} {
+  @media #{$tablet} {
     //max-width: 680px;
     margin-left: 0;
   }
@@ -40,7 +40,7 @@
   margin-top: 30px;
   margin-right: 48px;
 
-  @media #{$mobile}, #{$mobile-landscape} {
+  @media #{$tablet} {
     top: auto;
     right: auto;
     position: relative;

@@ -114,7 +114,6 @@
 </template>
 
 <script>
-import isMobile from 'ismobilejs'
 import { scroller } from 'vue-scrollto/src/scrollTo'
 import Subscribe from '~/components/Subscribe/index'
 
@@ -123,14 +122,12 @@ export default {
     move: 0,
     yPhone: 0,
     itemsWidth: 0,
-    loadImages: 0,
-    nv: window.navigator
+    loadImages: 0
   }),
   components: {
     Subscribe
   },
   beforeMount() {
-    console.log(isMobile(this.nv))
     window.addEventListener('resize', this.onResize)
     window.addEventListener('orientationchange', this.onResize)
   },
@@ -141,7 +138,7 @@ export default {
   methods: {
     imageScroll(evt, el) {
       if (!this.$refs.step1) return
-      if (!isMobile(this.nv).phone) return
+      if (window.innerWidth > 767) return
 
       const height = this.$refs.step1.clientHeight - el.clientHeight - 160
       const Ymove = window.scrollY
@@ -153,8 +150,7 @@ export default {
     },
     listScroll(evt, el) {
       if (!this.$refs.list) return
-      if (isMobile(this.nv).phone) return
-      if (isMobile(this.nv).tablet) return
+      if (window.innerWidth < 767) return
 
       const list = this.$refs.list.getBoundingClientRect()
 
@@ -178,13 +174,13 @@ export default {
     scrollTo() {
       const firstScrollTo = scroller()
       firstScrollTo('#step2', {
-        offset: -200
+        offset: -150
       })
     },
     onResize() {
       this.move = 0
       this.itemsWidth = Array.from(this.$refs['list-items'].children)
-        .map(item => item.getBoundingClientRect().width)
+        .map(item => item.getBoundingClientRect().width - 24)
         .reduce((acc, cur) => acc + cur)
     }
   }
