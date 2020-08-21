@@ -123,12 +123,14 @@ export default {
     move: 0,
     yPhone: 0,
     itemsWidth: 0,
-    loadImages: 0
+    loadImages: 0,
+    nv: window.navigator
   }),
   components: {
     Subscribe
   },
   beforeMount() {
+    console.log(isMobile(this.nv))
     window.addEventListener('resize', this.onResize)
     window.addEventListener('orientationchange', this.onResize)
   },
@@ -139,7 +141,7 @@ export default {
   methods: {
     imageScroll(evt, el) {
       if (!this.$refs.step1) return
-      if (!isMobile(window.navigator).phone) return
+      if (!isMobile(this.nv).phone) return
 
       const height = this.$refs.step1.clientHeight - el.clientHeight - 160
       const Ymove = window.scrollY
@@ -151,7 +153,8 @@ export default {
     },
     listScroll(evt, el) {
       if (!this.$refs.list) return
-      if (isMobile(window.navigator).phone) return
+      if (isMobile(this.nv).phone) return
+      if (isMobile(this.nv).tablet) return
 
       const list = this.$refs.list.getBoundingClientRect()
 
@@ -162,7 +165,7 @@ export default {
 
       const Yoffset = 48
       const offsetTop = this.$refs.step4.offsetTop
-      const Ystart = offsetTop - window.innerHeight + list.height + Yoffset
+      const Ystart = offsetTop - window.innerHeight + list.height
       const Yend = offsetTop - Yoffset
 
       const Ypercent = (Yend - window.scrollY) / (Yend - Ystart)
