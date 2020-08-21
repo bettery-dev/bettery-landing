@@ -24,7 +24,7 @@
   font-size: remy(72);
   line-height: 1;
 
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+  @media #{$laptop} {
     font-size: remy(40);
   }
 }
@@ -32,7 +32,7 @@
   font-size: remy(72);
   line-height: 1;
 
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+  @media #{$laptop} {
     font-size: remy(32);
   }
 }
@@ -41,7 +41,7 @@
   font-size: remy(20);
   line-height: 2; // 40
 
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+  @media #{$laptop} {
     font-size: remy(14);
     line-height: 1.666666666666667; // 20
   }
@@ -56,7 +56,7 @@
   font-size: remy(32);
   line-height: 1.5;
 
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+  @media #{$laptop} {
     font-size: remy(16);
   }
 }
@@ -65,7 +65,7 @@
   font-size: remy(14);
   line-height: 1.428571428571429;
 
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+  @media #{$laptop} {
     font-size: remy(14);
     line-height: 1.714285714285714;
   }
@@ -75,7 +75,7 @@
   font-size: remy(14);
   line-height: 1.428571428571429;
 
-  @media #{$tablet}, #{$tablet-landscape}, #{$iPadPro} {
+  @media #{$laptop} {
     font-size: remy(10);
     line-height: 1.6;
   }

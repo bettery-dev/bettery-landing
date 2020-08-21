@@ -11,7 +11,6 @@
           @keydown.delete="onDelete"
           type="text"
           placeholder="Введи е-мейл"
-          required
         />
         <button type="submit" :disabled="!validate">Узнать</button>
       </form>

@@ -1,17 +1,8 @@
 /* media width */
-
-$iPhone_5: 'only screen and (max-width: 320px)';
-
-$mobile: 'only screen and (max-width: 690px)';
-$mobile-landscape: 'only screen and (max-width: 995px) and (orientation: landscape)';
-
-$tablet: 'only screen and (max-width: 995px)';
-$tablet-landscape: 'only screen and (max-width: 1024px) and (orientation: landscape)';
-
-$iPadPro: 'only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5)';
-$iPadPro-landscape: 'only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5)';
-
-$mac: 'only screen and (max-width: 1440px)';
+$small: 'only screen and (max-width: 575px)';
+$mobile: 'only screen and (max-width: 767px)';
+$tablet: 'only screen and (max-width: 991px)';
+$laptop: 'only screen and (max-width: 1199px)';
 
 /* Color palette */
 
