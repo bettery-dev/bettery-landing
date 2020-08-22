@@ -7,6 +7,7 @@ body {
   background: $dark;
 
   margin: 0;
+  overscroll-behavior: none;
 }
 
 .overflow {
@@ -24,58 +25,6 @@ body {
   @media #{$tablet} {
     padding: 0 24px;
   }
-}
-
-.wrapper > footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  color: $white;
-  @include footer;
-
-  min-height: 140px;
-
-  margin-top: 206px;
-
-  @media #{$tablet} {
-    flex-direction: column;
-
-    border-top: 1px solid rgba($white, 0.2);
-
-    margin-top: 70px;
-    padding-top: 23px;
-    padding-bottom: 47px;
-  }
-}
-.wrapper > footer menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-left: 0;
-}
-.wrapper > footer menu a {
-  color: rgba($white, 0.5);
-  text-decoration: none;
-
-  &:hover {
-    color: rgba($white, 1);
-  }
-
-  margin-left: 48px;
-  @media #{$tablet} {
-    margin-left: 24px;
-  }
-
-  &:first-child {
-    margin-left: 0;
-  }
-}
-
-.copyright {
-  color: rgba($white, 0.5);
-  @include copyright;
 }
 
 h1 {
