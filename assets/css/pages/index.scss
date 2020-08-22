@@ -58,6 +58,10 @@ p {
 
   border-radius: 0 0 48px 48px;
 
+  @media #{$laptop} {
+    padding: 0 70px;
+  }
+
   @media #{$tablet} {
     min-height: 148px;
     border-radius: 0 0 24px 24px;
@@ -67,12 +71,9 @@ p {
 .step1 .image-scroll {
   @media #{$tablet} {
     top: 33px;
-    right: 72px;
+    right: 96px;
     bottom: auto;
     position: absolute;
-  }
-  @media #{$tablet} {
-    right: 96px;
   }
   @media #{$mobile} {
     right: -87px;
@@ -80,10 +81,21 @@ p {
 }
 
 .step1 .image img {
+  position: relative;
+  z-index: 1;
+
   width: auto;
   max-width: 100%;
   margin-top: 76px;
   margin-bottom: -138px;
+
+  box-shadow: 0 8px 32px rgba(16, 19, 64, 0.5);
+
+  border-radius: 56px;
+
+  @media #{$laptop} {
+    border-radius: 35px;
+  }
 
   @media #{$tablet} {
     top: 0;
@@ -411,30 +423,22 @@ p {
 
 .step4 {
   position: relative;
-
   margin-bottom: 215px;
 
   @media #{$tablet} {
     margin-bottom: 143px;
   }
   @media #{$mobile} {
-    margin-left: -24px;
-    margin-right: -24px;
     margin-bottom: 133px;
   }
 }
 .step4 .bg {
   top: 0;
-  left: -48px;
-  right: -48px;
+  left: 0;
+  right: 0;
   bottom: 0;
   position: absolute;
   z-index: 0;
-
-  @media #{$mobile} {
-    left: -24px;
-    right: -24px;
-  }
 }
 .step4 .bg1 {
   left: 61px;
@@ -520,39 +524,49 @@ p {
   }
 }
 
-.step4 .list-items {
-  display: flex;
-
-  @media #{$mobile} {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-
-    padding-left: 24px;
-  }
+.step4 .list {
+  text-align: center;
 }
+
 .step4 .list-items {
   position: relative;
   z-index: 1;
 
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  display: inline-block;
+  white-space: nowrap;
+  text-align: left;
+
+  margin: auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  padding-left: 48px;
+  padding-right: 48px;
+
+  @media #{$mobile} {
+    margin: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 .step4 .list-items > div {
-  flex: none;
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
 
-  margin-left: -32px;
+  margin-left: 48px;
 
-  &:first-child,
-  &:nth-child(2) {
+  @media #{$laptop} {
+    margin-left: 24px;
+  }
+
+  &:first-child {
     margin-left: 0;
   }
 
   img {
-    margin: -26px 0;
     @media #{$laptop} {
-      height: 532px;
+      height: 460px;
     }
   }
 }

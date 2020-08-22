@@ -1,10 +1,8 @@
 <template>
   <div class="overflow">
-    <div class="wrapper">
-      <nuxt />
+    <nuxt />
 
-      <v-footer />
-    </div>
+    <v-footer />
   </div>
 </template>
 
