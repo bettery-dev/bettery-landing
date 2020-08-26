@@ -21,11 +21,71 @@
 </template>
 
 <script>
+import VFooter from '~/components/footer'
 export default {
   components: {
-    VFooter: () => import('~/components/footer')
+    VFooter
   }
 }
 </script>
 
-<style lang="scss" src="./_.scss" />
+<style lang="scss">
+@import '~@/assets/css/var';
+
+.text-header,
+.text-article {
+  max-width: 680px;
+  margin-left: 288px;
+
+  @media #{$tablet} {
+    //max-width: 680px;
+    margin-left: 0;
+  }
+}
+
+.text-header {
+  padding-top: 96px;
+  margin-bottom: 80px;
+}
+
+.text-article {
+  position: relative;
+}
+
+.text-article menu {
+  padding: 0;
+}
+
+.text-article menu a {
+  top: 0;
+  right: 100%;
+  position: absolute;
+
+  color: $mind;
+
+  @include text;
+  font-weight: bold;
+
+  white-space: nowrap;
+
+  margin-top: 30px;
+  margin-right: 48px;
+
+  @media #{$tablet} {
+    top: auto;
+    right: auto;
+    position: relative;
+
+    margin-top: 0;
+    margin-right: 0;
+  }
+}
+
+.text-article h1,
+.text-article h2 {
+  margin-bottom: 20px;
+}
+.text-article section {
+  margin-bottom: 40px;
+}
+</style>
