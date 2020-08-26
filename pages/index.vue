@@ -34,18 +34,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '~@/assets/css/var';
-
-h2 {
-  margin-bottom: 32px;
-
-  @media #{$tablet} {
-    margin-bottom: 16px;
-  }
-}
-
-p {
-  margin-bottom: 0;
-}
-</style>
+<style lang="scss" src="@/assets/css/pages/index.scss" scoped />
