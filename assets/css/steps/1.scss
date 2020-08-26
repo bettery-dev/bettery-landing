@@ -1,0 +1,236 @@
+@import '~@/assets/css/var';
+
+.step1 {
+  position: relative;
+  display: flex;
+
+  margin-bottom: 177px;
+  padding-bottom: 114px;
+
+  @media #{$tablet} {
+    display: block;
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-bottom: 143px;
+  }
+
+  @media #{$mobile} {
+    margin-bottom: 198px;
+  }
+}
+.step1 > div {
+  width: 50%;
+  padding-right: 50px;
+
+  @media #{$tablet} {
+    width: 100%;
+    padding: 0;
+  }
+
+  &:last-child > div {
+    padding-left: 50px;
+
+    @media #{$tablet} {
+      padding: 0;
+    }
+  }
+}
+
+.step1 .image {
+  padding: 0 85px;
+  text-align: center;
+  background: $yellow;
+
+  border-radius: 0 0 48px 48px;
+
+  @media #{$laptop} {
+    padding: 0 70px;
+  }
+
+  @media #{$tablet} {
+    min-height: 148px;
+    border-radius: 0 0 24px 24px;
+  }
+}
+
+.step1 .image-scroll {
+  @media #{$tablet} {
+    top: 33px;
+    right: 96px;
+    bottom: auto;
+    position: absolute;
+  }
+  @media #{$mobile} {
+    right: -87px;
+  }
+}
+
+.step1 .image img {
+  position: relative;
+  z-index: 1;
+
+  width: auto;
+  max-width: 100%;
+  margin-top: 76px;
+  margin-bottom: -138px;
+
+  box-shadow: 0 8px 32px rgba(16, 19, 64, 0.5);
+
+  border-radius: 56px;
+
+  @media #{$laptop} {
+    border-radius: 35px;
+  }
+
+  @media #{$tablet} {
+    top: 0;
+    position: sticky;
+
+    margin: 0;
+
+    max-height: 464px;
+  }
+}
+
+.step1 .content {
+  padding-top: 82px;
+
+  @media #{$tablet} {
+    margin-left: 96px;
+    margin-top: 33px;
+    max-width: 285px;
+  }
+  @media #{$mobile} {
+    width: 50%;
+    margin-left: 24px;
+  }
+}
+.step1 .content .logo {
+  display: flex;
+  margin-left: -16px;
+  margin-bottom: 58px;
+
+  @media #{$tablet} {
+    display: block;
+    top: 56px;
+    left: 96px;
+    right: auto;
+    position: absolute;
+
+    width: 154px;
+    height: 56px;
+
+    margin: 0;
+  }
+  @media #{$mobile} {
+    left: 24px;
+  }
+}
+.step1 .content .logo img {
+  @media #{$tablet} {
+    margin: 0;
+    text-align: left;
+    justify-self: flex-start;
+
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+.step1 .content h1 {
+  @include h1;
+  margin-bottom: 32px;
+
+  @media #{$tablet} {
+    margin-bottom: 24px;
+  }
+}
+.step1 .content p {
+  @include text;
+  margin-bottom: 48px;
+
+  @media #{$tablet} {
+    margin-bottom: 90px;
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translate3d(0, -3px, 0);
+  }
+  to {
+    transform: translate3d(0, 7px, 0);
+  }
+}
+.step1 .content .scroll {
+  display: flex;
+  align-items: center;
+
+  color: $white;
+  @include scrolltext;
+
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @media #{$laptop} {
+    line-height: 2;
+  }
+
+  @media #{$tablet} {
+    left: 0;
+    right: 0;
+    position: absolute;
+
+    @include text;
+    flex-direction: column-reverse;
+  }
+}
+
+.step1 .content .scroll .scroll-arrow {
+  flex: 0 0 auto;
+  position: relative;
+
+  width: 48px;
+  height: 48px;
+
+  background: rgba($white, 0.25);
+
+  overflow: hidden;
+  border-radius: 50%;
+
+  @media #{$mobile}, #{$tablet} {
+    width: 24px;
+    height: 24px;
+    background: $white;
+  }
+
+  &::after {
+    top: 2px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+
+    content: '';
+
+    background: url('~@/assets/img/arrow.svg') 50% no-repeat;
+
+    animation: bounce 0.6s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+
+    @media #{$mobile}, #{$tablet} {
+      background-size: 12px;
+      animation: none;
+    }
+  }
+}
+.step1 .content .scroll span {
+  margin-left: 24px;
+
+  @media #{$mobile}, #{$tablet} {
+    margin-left: 0;
+    margin-bottom: 12px;
+  }
+}

@@ -2,6 +2,8 @@ module.exports = {
   mode: 'spa',
   target: 'static',
 
+  dev: process.env.NODE_ENV !== 'production',
+
   env: {
     BASE_URL: process.env.BASE_URL || 'https://landing-backend.bettery.app',
     ANALYTICS_ID: process.env.ANALYTICS_ID || 'G-51J0K3PNXR'
@@ -23,7 +25,6 @@ module.exports = {
       { charset: 'utf-8' },
 
       { name: 'title', content: 'Bettery.app' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Твой личный коуч для лучшей жизни' },
 
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
