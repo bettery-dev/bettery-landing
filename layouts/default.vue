@@ -7,8 +7,9 @@
 </template>
 
 <script>
-import VFooter from '~/components/footer'
 export default {
-  components: { VFooter }
+  components: {
+    VFooter: () => import('~/components/footer')
+  }
 }
 </script>

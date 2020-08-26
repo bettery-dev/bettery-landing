@@ -16,7 +16,6 @@
 
 <style lang="scss" scoped>
 @import '~@/assets/css/var';
-@import '~@/assets/css/fonts';
 
 .footer {
   display: flex;
