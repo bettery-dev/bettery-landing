@@ -17,13 +17,19 @@
 </template>
 
 <script>
+import step1 from '~/components/steps/step1'
+import step2 from '~/components/steps/step2'
+import step3 from '~/components/steps/step3'
+import step4 from '~/components/steps/step4'
+import Subscribe from '~/components/Subscribe/index'
+
 export default {
   components: {
-    step1: () => import('~/components/steps/step1'),
-    step2: () => import('~/components/steps/step2'),
-    step3: () => import('~/components/steps/step3'),
-    step4: () => import('~/components/steps/step4'),
-    Subscribe: () => import('~/components/Subscribe/index')
+    step1,
+    step2,
+    step3,
+    step4,
+    Subscribe
   }
 }
 </script>
