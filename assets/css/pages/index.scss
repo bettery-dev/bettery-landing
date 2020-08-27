@@ -1,0 +1,15 @@
+@import '~@/assets/css/var';
+
+h2 {
+  @include h2;
+  margin-bottom: 32px;
+
+  @media #{$tablet} {
+    margin-bottom: 16px;
+  }
+}
+
+p {
+  @include text;
+  margin-bottom: 0;
+}

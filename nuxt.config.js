@@ -78,7 +78,7 @@ module.exports = {
         cacheGroups: {
           styles: {
             name: 'styles',
-            test: /\.(css|vue)$/,
+            test: /\.(css|vue|scss)$/,
             chunks: 'all',
             enforce: true
           }
