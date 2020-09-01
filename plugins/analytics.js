@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import VueAnalytics from 'vue-analytics'
+import VueGtag from 'vue-gtag'
 
-Vue.use(VueAnalytics, {
-  id: process.env.ANALYTICS_ID
+Vue.use(VueGtag, {
+  config: { id: process.env.ANALYTICS_ID }
 })
