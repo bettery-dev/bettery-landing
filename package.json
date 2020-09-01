@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "nuxt": "^2.14.1",
-    "vue-analytics": "^5.22.1",
+    "vue-gtag": "^1.8.0",
     "vue-scrollto": "^2.18.2"
   },
   "devDependencies": {
