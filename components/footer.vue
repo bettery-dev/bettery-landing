@@ -9,7 +9,7 @@
         <nuxt-link to="/">Помощь</nuxt-link>
       </menu>-->
 
-      <div class="copyright">Bettery.app © 2020</div>
+      <div class="copyright">ИП Манская Екатерина Сергеевна © 2020</div>
     </footer>
   </div>
 </template>
