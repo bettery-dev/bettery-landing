@@ -10,6 +10,7 @@
           @input="validate = true"
           @keydown.delete="onDelete"
           type="text"
+          name="email"
           placeholder="Введи е-мейл"
         />
         <button type="submit" :disabled="!validate">Узнать</button>
