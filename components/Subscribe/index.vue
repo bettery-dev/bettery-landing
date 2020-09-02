@@ -46,6 +46,11 @@ export default {
     onDelete() {
       this.validate = true
     },
+    track() {
+      this.$gtag.event('subscribe', {
+        'value': this.email,
+      });
+    },
     async onSubmit() {
       this.validate = isValidEmail(this.email)
       if (!this.validate) return
@@ -63,6 +68,7 @@ export default {
             'Content-Type': 'application/json'
           }
         })
+        this.track();
 
         this.validate = true
         this.isSuccess = true
