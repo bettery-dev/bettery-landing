@@ -68,6 +68,7 @@ export default {
             'Content-Type': 'application/json'
           }
         })
+        console.log('tracking user subscribed');
         this.track();
 
         this.validate = true
