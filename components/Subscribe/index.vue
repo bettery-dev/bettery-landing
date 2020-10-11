@@ -47,9 +47,7 @@ export default {
       this.validate = true
     },
     track() {
-      this.$gtag.event('generate_lead', {
-        'event_label': this.email,
-      });
+      this.$gtm.push({ event: 'subscribe' });
     },
     async onSubmit() {
       this.validate = isValidEmail(this.email)

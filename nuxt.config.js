@@ -6,7 +6,6 @@ module.exports = {
 
   env: {
     BASE_URL: process.env.BASE_URL || 'https://landing-backend.bettery.app',
-    ANALYTICS_ID: process.env.ANALYTICS_ID || 'G-51J0K3PNXR'
   },
 
   router: {
@@ -100,10 +99,18 @@ module.exports = {
     }
   },
 
-  plugins: [
-    { src: '~plugins/scroll', mode: 'client' },
-    { src: '~plugins/analytics', mode: 'client' }
+  modules: [
+    '@nuxtjs/gtm'
   ],
+
+  plugins: [
+    { src: '~plugins/scroll', mode: 'client' }
+  ],
+
+  gtm: {
+    id: 'GTM-5FSLWBW',
+    enabled: true
+  },
 
   css: [{ src: '~assets/css/main.scss', lang: 'scss' }]
 }

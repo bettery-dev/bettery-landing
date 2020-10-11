@@ -19,7 +19,7 @@ $ yarn start
 
 Default options
 BASE_URL = http://178.128.240.97:3000
-ANALYTICS_ID = G-51J0K3PNXR
+ANALYTICS_ID = GTM-5FSLWBW
 
 $ BASE_URL=${BASE_URL} ANALYTICS_ID=${ANALYTICS_ID} yarn generate
 
