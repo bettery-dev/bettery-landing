@@ -100,8 +100,17 @@ module.exports = {
   },
 
   modules: [
-    '@nuxtjs/gtm'
+    '@nuxtjs/gtm',
+    '@nuxtjs/yandex-metrika'
   ],
+
+  yandexMetrika: {
+    id: '67867402',
+    webvisor: true,
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true,
+  },
 
   plugins: [
     { src: '~plugins/scroll', mode: 'client' }
